@@ -47,7 +47,7 @@ titanic_training.loc[titanic_training["Embarked"] == "C", "Embarked"] = 1
 titanic_training.loc[titanic_training["Embarked"] == "Q", "Embarked"] = 2
 
 # convert test data to number values
-
+'''
 titanic_test["Age"] = titanic_test["Age"].fillna(titanic_test["Age"].median())
 
 titanic_test.loc[titanic_test["Embarked"] == "S", "Embarked"] = 0
@@ -56,7 +56,7 @@ titanic_test.loc[titanic_test["Embarked"] == "Q", "Embarked"] = 2
 
 titanic_test.loc[titanic_test["Sex"] == "male", "Sex"] = 0
 titanic_test.loc[titanic_test["Sex"] == "female", "Sex"] = 1
-
+'''
 
 # predictors = ["Pclass", "Sex", "Age", "SibSp", "Parch", "Fare", "Embarked"]
 predictors = ["Sex", "Age", "Embarked"]
@@ -74,6 +74,7 @@ classifier = GaussianNB()
 classifier.fit(titanic_training.as_matrix(predictors), titanic_training.as_matrix(predict)) # x = features, y = labels
 predictions = classifier.predict(titanic_test.as_matrix(predictors))
 
+'''
 # generate kaggle submission
 submission = pandas.DataFrame({
     "PassengerId" : titanic_test["PassengerID"],
@@ -81,3 +82,4 @@ submission = pandas.DataFrame({
 })
 
 submission.to_csv("kaggle_titanic_submission", index=False)
+'''
